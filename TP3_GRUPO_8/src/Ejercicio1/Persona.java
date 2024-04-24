@@ -1,6 +1,6 @@
 package Ejercicio1;
 
-public class Persona {
+public class Persona implements Comparable<Persona>{
 
 	private String nombre;
     private String apellido;
@@ -44,5 +44,31 @@ public class Persona {
 	public String toString() {
 		return nombre + "-" + apellido + "-" + dni;
 	}
+	
+	 public int hashCode() {
+	        return dni.hashCode();
+	    }
+
+	@Override
+	   public boolean equals(Object obj) {
+     if (obj == this) return true;
+     if (!(obj instanceof Persona)) return false;
+     Persona otraPersona = (Persona) obj;
+     return this.dni.equals(otraPersona.getDni());
+ }
+
+	@Override
+	public int compareTo(Persona p) {
+		 int comparacion = this.apellido.compareToIgnoreCase(p.apellido);
+		  
+		    if (comparacion == 0) {
+		        return 0;
+		    }
+		    return comparacion;
+	}
+	
+	
+	
+	
 	
 }
